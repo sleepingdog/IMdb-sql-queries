@@ -45,3 +45,15 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Project files
+.ssms_suo
+.ssmssln
+.ssmssqlproj
+.xpr
+
+# compressed archives
+.gz
+
+# data
+.tsv
