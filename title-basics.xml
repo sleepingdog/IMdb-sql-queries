@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BCPFORMAT xmlns="http://schemas.microsoft.com/sqlserver/2004/bulkload/format" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
+    <RECORD>  
+        <FIELD ID="1" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="9" COLLATION="SQL_Latin1_General_CP1_CI_AS"/>  
+        <FIELD ID="2" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="20"/>
+        <FIELD ID="3" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="1000"/>
+        <FIELD ID="4" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="1000"/>
+        <FIELD ID="5" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="10"/>
+        <FIELD ID="6" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="10"/>
+        <FIELD ID="7" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="10"/>
+        <FIELD ID="8" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="10"/>
+        <FIELD ID="9" xsi:type="CharTerm" TERMINATOR="\n" MAX_LENGTH="50"/>  
+    </RECORD>  
+    <ROW>  
+        <COLUMN SOURCE="1" NAME="tconst" xsi:type="SQLCHAR"/>  
+        <COLUMN SOURCE="2" NAME="titleType" xsi:type="SQLNVARCHAR"/>
+        <COLUMN SOURCE="3" NAME="primaryTitle" xsi:type="SQLNVARCHAR"/>  
+        <COLUMN SOURCE="4" NAME="originalTitle" xsi:type="SQLNVARCHAR"/>  
+        <COLUMN SOURCE="5" NAME="isAdult" xsi:type="SQLBIT"/>  
+        <COLUMN SOURCE="6" NAME="startYear" xsi:type="SQLNVARCHAR"/>  
+        <COLUMN SOURCE="7" NAME="endYear" xsi:type="SQLNVARCHAR"/>  
+        <COLUMN SOURCE="8" NAME="runtimeMinutes" xsi:type="SQLNVARCHAR"/>  
+        <COLUMN SOURCE="9" NAME="genres" xsi:type="SQLNVARCHAR"/>  
+    </ROW>  
+</BCPFORMAT>
