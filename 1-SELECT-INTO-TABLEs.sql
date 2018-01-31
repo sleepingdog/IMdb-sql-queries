@@ -1,8 +1,9 @@
 /*
 1-SELECT-INTO-TABLEs.sql
 
-To simply file paths, the drive letter I: has been mapped to
+To simplify file paths, the drive letter I: has been mapped to
 the directory containing all the relevant files. Do this first.
+Running time in last test approximately 6 minutes 40 seconds.
 */
 -- DROP existing IMDb database
 USE [master]
