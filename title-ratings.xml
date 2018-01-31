@@ -7,7 +7,7 @@
     </RECORD>  
     <ROW>  
         <COLUMN SOURCE="1" NAME="tconst" xsi:type="SQLCHAR"/>  
-        <COLUMN SOURCE="2" NAME="averageRating" xsi:type="SQLNUMERIC"/>  
+        <COLUMN SOURCE="2" NAME="averageRating" xsi:type="SQLNUMERIC" PRECISION="3" SCALE="1"/>  
         <COLUMN SOURCE="3" NAME="numVotes" xsi:type="SQLBIGINT"/>  
     </ROW>  
 </BCPFORMAT>
