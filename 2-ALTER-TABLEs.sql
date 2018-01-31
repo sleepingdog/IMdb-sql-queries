@@ -1,5 +1,6 @@
 /*
 2-ALTER-TABLEs.sql
+Add primary keys to the tables imported from the IMDb data files.
 */
 USE IMDb;  
 GO  
@@ -15,14 +16,17 @@ GO
 ALTER TABLE movie.titlebasics
 	ADD CONSTRAINT PK_titlebasics_tconst PRIMARY KEY CLUSTERED (tconst);  
 GO
+-- titleakas has multiple column primary key
 ALTER TABLE movie.titleakas
 	ALTER COLUMN titleId CHAR(9) NOT NULL;
 GO
-/* -- duplicate key found
 ALTER TABLE movie.titleakas
-	ADD CONSTRAINT PK_titleakas_titleId PRIMARY KEY CLUSTERED (titleId);  
+	ALTER COLUMN  ordering TINYINT NOT NULL;
+;
 GO
-*/
+ALTER TABLE movie.titleakas
+	ADD CONSTRAINT PK_titleakas_titleId_ordering PRIMARY KEY CLUSTERED (titleId, ordering);  
+GO
 ALTER TABLE movie.titlecrew
 	ALTER COLUMN tconst CHAR(9) NOT NULL;
 GO
