@@ -1,6 +1,7 @@
 /*
 2-ALTER-TABLEs.sql
 Add primary keys to the tables imported from the IMDb data files.
+Running time in last test approximately 15 minutes 18 seconds.
 */
 USE IMDb;  
 GO  
@@ -51,7 +52,29 @@ GO
 ALTER TABLE movie.titleratings
 	ADD CONSTRAINT PK_titleratings_tconst PRIMARY KEY CLUSTERED (tconst);  
 GO
-
-
-
+/*
+Add foreign key constraints to the tables imported from the IMDb data files.
+*/
+/*
+ALTER TABLE movie.titleakas
+ADD CONSTRAINT FK_titleakas_titleId FOREIGN KEY (titleId)  
+    REFERENCES movie.titlebasics(tconst);  
+GO
+*/
+ALTER TABLE movie.titlecrew
+ADD CONSTRAINT FK_titlecrew_tconst FOREIGN KEY (tconst)  
+    REFERENCES movie.titlebasics(tconst);  
+GO  
+ALTER TABLE movie.titleepisode
+ADD CONSTRAINT FK_titleepisode_tconst FOREIGN KEY (tconst)  
+    REFERENCES movie.titlebasics(tconst);  
+GO  
+ALTER TABLE movie.titleprincipals
+ADD CONSTRAINT FK_titleprincipals_tconst FOREIGN KEY (tconst)  
+    REFERENCES movie.titlebasics(tconst);  
+GO  
+ALTER TABLE movie.titleratings
+ADD CONSTRAINT FK_titleratings_tconst FOREIGN KEY (tconst)  
+    REFERENCES movie.titlebasics(tconst);  
+GO  
 
