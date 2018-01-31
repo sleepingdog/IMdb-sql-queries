@@ -47,13 +47,13 @@ Temporary Items
 .apdisk
 
 # Project files
-.ssms_suo
-.ssmssln
-.ssmssqlproj
-.xpr
+*.ssms_suo
+*.ssmssln
+*.ssmssqlproj
+*.xpr
 
 # compressed archives
-.gz
+*.gz
 
 # data
-.tsv
+*.tsv
