@@ -20,5 +20,6 @@ If you put the XML format files and SQL bulk upload files in the same directory,
 
 1-SELECT-INTO-TABLEs.sql
 2-ALTER-TABLEs.sql
+3-CREATE-derived-TABLEs.sql
 
-I plan to add some queries of interest later. Also create some derived tables to better normalise the data.
+I plan to add some queries of interest. An early demo tries to compute the average age of actors by gender in each year of TV series Doctor Who, which shows both the potential and limitations of the data for querying purposes.
