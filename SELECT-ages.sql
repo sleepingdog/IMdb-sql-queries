@@ -9,6 +9,8 @@ USE IMDb;
 --   Only pure actor/actress professionals are included.
 --   Archive footage may be incorporated into documentaries, offsetting performance dates.
 --   Rows are performances, so actors may repeat.
+DECLARE @releaseDelay AS TINYINT; -- maximum year offset between production and release.
+SET @releaseDelay = 2; -- actors may have died between performance and release.
 SELECT TOP 100 c.primaryName
 	, c.birthYear
 	, c.deathYear
@@ -19,6 +21,8 @@ SELECT TOP 100 c.primaryName
 	, t.startYear
 	, t.endYear
 	, t.titleType
+	, 'https://www.imdb.com/title/' + t.tconst AS movieLink -- t.tconst example: tt0249050
+	--, '<a href="https://www.imdb.com/title/' + t.tconst + '">' + t.primaryTitle + '</a>' AS movieLink -- t.tconst example: tt0249050
 FROM movie.namebasics AS c
 	INNER JOIN
 		deriv.titlecast AS tc
@@ -28,6 +32,6 @@ FROM movie.namebasics AS c
 			ON tc.tconst = t.tconst
 WHERE (c.primaryProfession IN ('actor', 'actress')
 	AND t.titleType = 'movie'
-	AND ISNULL(c.deathYear, YEAR(GETDATE())) >= (ISNULL(t.endYear, t.startYear)) - 2)
+	AND ISNULL(c.deathYear, YEAR(GETDATE())) >= (ISNULL(t.endYear, t.startYear)) - @releaseDelay)
 ORDER BY agePerformance DESC
 ;
