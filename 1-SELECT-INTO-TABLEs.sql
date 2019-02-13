@@ -83,7 +83,7 @@ FROM OPENROWSET (
 	CODEPAGE = '65001' -- utf-8, requires SS2016+
 ) AS titleepisode;  -- approx 3167900 rows
 GO
-SELECT tconst, principalCast
+SELECT tconst, ordering, nconst, category, job, characters --principalCast
 	INTO movie.titleprincipals
 FROM OPENROWSET (
 	BULK 'I:\title.principals.tsv',   

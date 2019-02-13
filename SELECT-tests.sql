@@ -15,8 +15,8 @@ SELECT tb.primaryTitle
 	--, tp.principalCast
 	, nb.primaryName, nb.birthYear, nb.primaryProfession
 	, e2.startYear - nb.birthYear AS age
-	, CASE WHEN primaryProfession LIKE '%actor%' THEN e2.startYear - nb.birthYear ELSE NULL END AS maleAge
-	, CASE WHEN primaryProfession LIKE '%actress%' THEN e2.startYear - nb.birthYear ELSE NULL END AS femaleAge
+	, CASE WHEN tp.category = 'actor' THEN e2.startYear - nb.birthYear ELSE NULL END AS maleAge
+	, CASE WHEN tp.category = 'actress' THEN e2.startYear - nb.birthYear ELSE NULL END AS femaleAge
 FROM movie.titlebasics AS tb
 	INNER JOIN
 		movie.titleepisode AS e1
@@ -27,20 +27,17 @@ FROM movie.titlebasics AS tb
 	LEFT OUTER JOIN
 		movie.titleprincipals AS tp
 			ON tp.tconst = e1.tconst
-	LEFT OUTER JOIN
+	/*LEFT OUTER JOIN
 		deriv.titlecast AS tc
-			ON e1.tconst = tc.tconst
+			ON e1.tconst = tc.tconst*/
 	LEFT OUTER JOIN
 		movie.namebasics AS nb
-			ON nb.nconst = tc.castMember
+			ON nb.nconst = tp.nconst
 	LEFT OUTER JOIN
 		movie.titlecrew AS dw
 			ON e1.tconst = dw.tconst
 WHERE tb.primaryTitle = 'Doctor Who' AND tb.titleType = 'tvSeries'
-	AND (nb.primaryProfession LIKE '%actress%'
-		OR nb.primaryProfession LIKE '%actor%')
-	AND nb.nconst NOT IN (SELECT value FROM STRING_SPLIT(dw.directors, ','))
-	AND nb.nconst NOT IN (SELECT value FROM STRING_SPLIT(dw.writers, ','))
+	AND tp.category IN ('actress', 'actor')
 )
 -- basic SELECT statement
 /*

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BCPFORMAT xmlns="http://schemas.microsoft.com/sqlserver/2004/bulkload/format" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
     <RECORD>  
-        <FIELD ID="1" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="9" COLLATION="SQL_Latin1_General_CP1_CI_AS"/>  
+        <FIELD ID="1" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="12" COLLATION="SQL_Latin1_General_CP1_CI_AS"/>  
         <FIELD ID="2" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="3"/>
         <FIELD ID="3" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="1000"/>
         <FIELD ID="4" xsi:type="CharTerm" TERMINATOR="\t" MAX_LENGTH="5"/>
@@ -11,7 +11,7 @@
         <FIELD ID="8" xsi:type="CharTerm" TERMINATOR="\n" MAX_LENGTH="2"/>  
     </RECORD>  
     <ROW>  
-        <COLUMN SOURCE="1" NAME="titleId" xsi:type="SQLCHAR"/>  
+        <COLUMN SOURCE="1" NAME="titleId" xsi:type="SQLVARYCHAR"/>  
         <COLUMN SOURCE="2" NAME="ordering" xsi:type="SQLTINYINT"/>
         <COLUMN SOURCE="3" NAME="title" xsi:type="SQLNVARCHAR"/>  
         <COLUMN SOURCE="4" NAME="region" xsi:type="SQLCHAR"/>  

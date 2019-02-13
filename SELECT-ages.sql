@@ -16,7 +16,7 @@ SELECT TOP 100 c.primaryName
 	, c.deathYear
 	, (c.deathYear - (ISNULL(c.birthYear, YEAR(GETDATE())))) AS ageLatest
 	, (t.startYear - c.birthYear) AS agePerformance
-	, c.primaryProfession
+	, tp.category
 	, t.primaryTitle
 	, t.startYear
 	, t.endYear
@@ -25,12 +25,12 @@ SELECT TOP 100 c.primaryName
 	--, '<a href="https://www.imdb.com/title/' + t.tconst + '">' + t.primaryTitle + '</a>' AS movieLink -- t.tconst example: tt0249050
 FROM movie.namebasics AS c
 	INNER JOIN
-		deriv.titlecast AS tc
-			ON c.nconst = tc.castMember
+		movie.titleprincipals AS tp --- replaces deriv.titlecast AS tc
+			ON c.nconst = tp.nconst
 	INNER JOIN
 		movie.titlebasics AS t
-			ON tc.tconst = t.tconst
-WHERE (c.primaryProfession IN ('actor', 'actress')
+			ON tp.tconst = t.tconst
+WHERE (tp.category IN ('actor', 'actress')
 	AND t.titleType = 'movie'
 	AND ISNULL(c.deathYear, YEAR(GETDATE())) >= (ISNULL(t.endYear, t.startYear)) - @releaseDelay)
 ORDER BY agePerformance DESC
