@@ -83,7 +83,10 @@ FROM OPENROWSET (
 	CODEPAGE = '65001' -- utf-8, requires SS2016+
 ) AS titleepisode;  -- approx 3167900 rows
 GO
-SELECT tconst, ordering, nconst, category, job, characters --principalCast
+SELECT tconst, ordering, nconst, category,
+	CAST((CASE WHEN job = '\N' THEN NULL ELSE job END) AS NVARCHAR(512)) AS job,
+	CAST((CASE WHEN characters = '\N' THEN NULL ELSE characters END) AS NVARCHAR(512)) AS characters
+	--principalCast
 	INTO movie.titleprincipals
 FROM OPENROWSET (
 	BULK 'I:\title.principals.tsv',   
